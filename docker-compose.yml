@@ -3,7 +3,7 @@ services:
     image: ${DOCKER_REGISTRY-}microcartorderapi
     build:
       context: .
-      dockerfile: src/microcart.order.api/Dockerfile
+      dockerfile: src/Services/microcart.order.api/Dockerfile
     ports:
       - 52001:8080
 
