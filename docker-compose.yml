@@ -1,0 +1,20 @@
+services:
+  microcart.order.api:
+    image: ${DOCKER_REGISTRY-}microcartorderapi
+    build:
+      context: .
+      dockerfile: src/microcart.order.api/Dockerfile
+    ports:
+      - 52001:8080
+
+  microcart.database:
+    image: postgres:latest
+    container_name: microcart-postgres
+    environment:
+      - POSTGRES_DB=microcart
+      - POSTGRES_USER=microcart
+      - POSTGRES_PASSWORD=microcart
+    volumes:
+      - ./.containers/microcart-postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432

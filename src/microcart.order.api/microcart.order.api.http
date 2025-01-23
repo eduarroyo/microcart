@@ -1,0 +1,6 @@
+@microcart.order.api_HostAddress = http://localhost:5065
+
+GET {{microcart.order.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
