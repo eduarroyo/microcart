@@ -9,6 +9,8 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "microcart.order.api", "src\services\microcart.order.api\microcart.order.api.csproj", "{086345C4-3CC3-7C5A-D8CB-490947EF6871}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "microcart.product.api", "src\Services\microcart.product.api\microcart.product.api.csproj", "{77B94AA1-7F27-4BDF-8DE1-70EFFD7BD250}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +25,17 @@ Global
 		{086345C4-3CC3-7C5A-D8CB-490947EF6871}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{086345C4-3CC3-7C5A-D8CB-490947EF6871}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{086345C4-3CC3-7C5A-D8CB-490947EF6871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77B94AA1-7F27-4BDF-8DE1-70EFFD7BD250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77B94AA1-7F27-4BDF-8DE1-70EFFD7BD250}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77B94AA1-7F27-4BDF-8DE1-70EFFD7BD250}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77B94AA1-7F27-4BDF-8DE1-70EFFD7BD250}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{086345C4-3CC3-7C5A-D8CB-490947EF6871} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{77B94AA1-7F27-4BDF-8DE1-70EFFD7BD250} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {53BBD1BB-5F42-4880-810C-38549CAC1BF4}

@@ -1,4 +1,5 @@
 using microcart.order.api.Database;
+using microcart.order.api.Endpoints;
 using Microsoft.EntityFrameworkCore;
 using Products.Api.Extensions;
 
@@ -9,40 +10,31 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<MicrocartDbContext>(
-    options => options.UseNpgsql(builder.Configuration.GetConnectionString("microcartdb")));
+    options =>
+    {
+        options.UseNpgsql(builder.Configuration.GetConnectionString("microcartdb"));
+    }
+);
+
+builder.Services.AddCors(
+    options => options.AddDefaultPolicy(
+        builder => builder.WithOrigins("http://localhost:52001/", "http://localhost:52001/swagger/index.html")
+    )
+);
 
 var app = builder.Build();
+
+app.MapProductEntpoints();
+app.MapOrderEntpoints();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.UseSwaggerUI(op => op.SwaggerEndpoint("/openapi/v1.json", "v1"));
-    app.ApplyMigrations();
 }
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+await app.PrepareDatabase(app.Environment.IsDevelopment());
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
 
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
